@@ -23,7 +23,7 @@ ENTRY = (
 MAX_LENGTH = 140
 
 
-def check_line(line):
+def validate_line(line):
     """Gate the line the way the sealed scorer does: UTF-8, 1-140 chars."""
     if not isinstance(line, str):
         raise TypeError("entry must be a string")
@@ -46,7 +46,7 @@ def entry_path():
 
 
 def main():
-    line = check_line(ENTRY)
+    line = validate_line(ENTRY)
     path = entry_path()
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as handle:
